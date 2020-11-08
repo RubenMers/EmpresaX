@@ -1,0 +1,74 @@
+﻿@model ML.Sucursal
+@{
+    ViewBag.Title = "Sucursal";
+}
+
+<h2>Sucursales</h2>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+
+            @Html.ActionLink("Agregar sucursal", "Form", "sucursal", htmlAttributes: new { @class = "btn btn-primary" })
+
+        </div>
+    </div>
+</div>
+
+
+<div class="container">
+    <div class="row">
+
+        <table class="table table-hover">
+            <tr>
+                <th class="text-center">
+                    Editar
+                </th>
+                <th class="text-center">
+                    Ver Productos
+                </th>
+                <th class="text-center" hidden>
+                    IdSucursal
+                </th>
+                <th class="text-center">
+                    Nombre
+                </th>
+                <th class="text-center">
+                    Eliminar
+                </th>
+
+
+            </tr>
+
+
+            @foreach (ML.Sucursal sucursal in Model.Sucursales)
+            {
+                <tr>
+                    <td class="text-center">
+                        @Html.ActionLink("Editar", "Form", new { IdSucursal = sucursal.IdSucursal, @class = "btn btn-primary" })
+                    </td>
+                    <td class="text-center">
+                        @Html.ActionLink("Ver productos", "ProductosAdministrador", sucursal, new { IdSucursal = sucursal.IdSucursal })
+                    </td>
+                    <td class="text-center" hidden>
+                        @sucursal.IdSucursal
+                    </td>
+                    <td class="text-center">
+                        @sucursal.Nombre
+                    </td>
+                    <td class="text-center">
+                        <a href="@Url.Action("Delete", "Sucursal", new { IdSucursal = sucursal.IdSucursal })" onclick="return confirm('Estas seguro que deseas eliminar estos datos?');">
+                            Eliminar
+                        </a>
+                    </td>
+
+
+                </tr>
+            }
+
+        </table>
+
+
+    </div>
+</div>

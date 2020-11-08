@@ -1,0 +1,56 @@
+﻿@model ML.SucursalProducto
+@{
+    ViewBag.Title = "Productos";
+}
+
+<h2>Productos</h2>
+
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            @*@Html.DropDownListFor(Model=> Model.Sucursal)*@
+        </div>
+    </div>
+</div>
+
+
+<div class="container">
+    <div class="col">
+
+
+
+
+        @foreach (ML.SucursalProducto sucursalProducto in Model.sucursalProductos)
+        {
+            <div class="container col-lg-3">
+                <div class="row ">
+                    <div class="col-md-3">
+                        <div class="card" style=" width:150px">
+                            <img class="card-img-top" src="data:image/jpeg;base64,@Convert.ToBase64String(@sucursalProducto.Producto.LogoTipo)" style="height: 80px; width: 80px" />
+                            <div class="card-body">
+
+                                <h4 class="card-title">@sucursalProducto.Producto.Nombre</h4>
+                                <p class="card-text">Precio: @sucursalProducto.Producto.PrecioUnitario</p>
+                                <p class="card-text">Cantidad disponible: @sucursalProducto.Cantidad</p>
+                                @Html.ActionLink("Agregar stock", "FormAdministrador", new { IdSucursalProducto = sucursalProducto.IdSucursalProducto })
+                                
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+
+        }
+
+
+
+    </div>
+</div>
+
+

@@ -1,0 +1,16 @@
+﻿@model ML.Producto
+
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h3>@ViewBag.Message</h3>
+        </div>
+
+        <div class="col">
+            @Html.ActionLink("Aceptar", "GetAll", "Producto", htmlAttributes: new { @class = "btn btn-primary" })
+        </div>
+    </div>
+</div>
+
+

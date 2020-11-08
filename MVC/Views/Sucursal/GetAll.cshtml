@@ -1,0 +1,50 @@
+﻿@model ML.Sucursal
+@{
+    ViewBag.Title = "Sucursal";
+}
+
+<h2>Sucursales</h2>
+
+
+
+<div class="container">
+    <div class="row">
+
+        <table class="table table-hover">
+            <tr>
+                <th class="text-center">
+                    Ver Productos
+                </th>
+                <th class="text-center" hidden>
+                    IdSucursal
+                </th>
+                <th class="text-center">
+                    Nombre
+                </th>
+
+
+            </tr>
+
+
+            @foreach (ML.Sucursal sucursal in Model.Sucursales)
+            {
+                <tr>
+                    
+                    <td class="text-center">
+                        @Html.ActionLink("Ver productos", "Productos", sucursal, new { IdSucursal = sucursal.IdSucursal })
+                    </td>
+                    <td class="text-center" hidden>
+                        @sucursal.IdSucursal
+                    </td>
+                    <td class="text-center">
+                        @sucursal.Nombre
+                    </td>
+
+                </tr>
+            }
+
+        </table>
+
+
+    </div>
+</div>

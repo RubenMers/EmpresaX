@@ -1,0 +1,90 @@
+﻿@model ML.Producto
+@{
+    ViewBag.Title = "GetAll";
+}
+
+<h2>GetAll</h2>
+<div class="container">
+    <div class="row">
+        <div class="col btn btn-default">
+            @Html.ActionLink("Agregar Producto", "Form", "Producto")
+        </div>
+    </div>
+</div>
+<br>
+<div class="container">
+    <div class="row ">
+        <table class="table table-hover">
+            <tr>
+                <th class="text-center">
+                    Editar
+                </th>
+                <th class="text-center">
+                    IdProducto
+                </th>
+                <th class="text-center">
+                    Nombre
+                </th>
+                <th class="text-center">
+                    Codigo de Barras
+                </th>
+                <th class="text-center">
+                    Cantidad
+                </th>
+                <th class="text-center">
+                    PrecioUnitario
+                </th>
+                <th class="text-center">
+                    LogoTipo
+                </th>
+                <th class="text-center">
+                    Eliminar
+                </th>
+
+            </tr>
+
+
+            @foreach (ML.Producto producto in Model.Productos)
+            {
+
+                <tr>
+                    <td class="text-center">
+                        @Html.ActionLink("Editar", "Form", producto, new { @class="btn btn-primary",IdProducto = producto.IdProducto })
+                    </td>
+                    <td class="text-center">
+                        @producto.IdProducto
+                    </td>
+                    <td class="text-center">
+                        @producto.Nombre
+                    </td>
+                    <td class="text-center">
+                        @producto.CodigoDeBarras
+                    </td>
+                    
+                    <td class="text-center">
+                        @producto.Cantidad
+                    </td>
+                    <td class="text-center">
+                        @producto.PrecioUnitario
+                    </td>
+                    <td class="text-center">
+                        <img src="data:image/jpeg;base64,@Convert.ToBase64String(@producto.LogoTipo)" style="height: 75px; width: 75px" />
+                    </td>
+                    <td class="text-center">
+                        
+                            @Html.ActionLink("Eliminar", "Delete", producto, new { @class="btn btn-danger",IdProducto = producto.IdProducto })
+                       
+
+
+                    </td>
+
+                </tr>
+
+
+            }
+
+
+        </table>
+
+    </div>
+</div>
